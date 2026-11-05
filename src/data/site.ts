@@ -1,174 +1,138 @@
-export type BrandIconName =
-  | 'youtube'
-  | 'github'
-  | 'discord'
-  | 'linkedin'
-  | 'instagram'
-  | 'telegram'
-  | 'mail'
-  | 'x'
-  | 'globe'
-  | 'file'
-  | 'book'
-  | 'game'
-  | 'teach'
-  | 'language'
-
-export type SocialLink = {
-  id: string
-  label: string
-  description: string
-  href: string
-  icon: BrandIconName
-  accent: string
-}
-
-export type QuickLink = {
-  id: string
-  label: string
-  href: string
-  icon: BrandIconName
-}
-
-export type FollowLink = {
-  id: string
-  label: string
-  href: string
-  icon: BrandIconName
-}
-
-export type Skill = {
-  id: string
-  label: string
-  icon: 'code' | 'script' | 'linux' | 'shield' | 'web' | 'more'
-}
+export type OptionalUrl = string
 
 /**
- * All destinations live here. Replace `#` with real URLs when ready.
+ * Central destinations. Leave a field empty to hide its control.
+ * Never use "#" or incomplete mailto values here.
  */
 export const urls = {
-  youtube: '#',
-  github: '#',
-  discord: '#',
-  linkedin: '#',
+  github: 'https://github.com/Brolomna',
+  linkedin: '',
+  youtube: '',
+  discord: '',
   instagram: 'https://www.instagram.com/Just9n555/',
-  telegram: '#',
-  x: '#',
-  email: 'mailto:',
-  portfolio: '#',
-  resume: '#',
-  blog: '#',
-  moonfall: '#',
-  teaching: '#',
-  thai: '#',
-} as const
+  telegram: '',
+  x: '',
+  email: '',
+  resume: '',
+  blog: '',
+  moonfall: 'https://github.com/Brolomna/Moonfall',
+  aiWorkflow: 'https://github.com/Brolomna/ai-workflow-assistant',
+  dataExtractor: 'https://github.com/Brolomna/data_extractor',
+  chillBot: 'https://github.com/Brolomna/Chill-Corner-Bot',
+} satisfies Record<string, OptionalUrl>
 
 export const site = {
   name: 'Justin',
+  givenName: 'Justin',
   shortName: 'J',
-  title: 'Justin | Developer, Teacher & Creator',
+  title: 'Justin — Developer, Automation & AI',
   description:
-    'Futuristic link hub for Justin — developer, teacher, cybersecurity enthusiast, and digital creator.',
-  role: 'Developer • Teacher • Creator',
-  tagline: 'Build • Teach • Explore • Grow',
-  location: 'Chiang Mai, Thailand',
-  about:
-    "Hey! I'm Justin. A passionate developer, teacher and lifelong learner. Welcome to my link hub!",
-  quote: {
-    lines: ['Dream Big,', 'Build Better.'],
-    attribution: 'Justin',
-  },
-  facts: [
-    { id: 'exp', label: '4+ Years Experience', icon: 'spark' as const },
-    { id: 'loc', label: 'Chiang Mai, Thailand', icon: 'pin' as const },
-    { id: 'learn', label: 'Keep Learning', icon: 'book' as const },
-  ],
-  profileImage: '/profile.svg',
+    'Cinematic portfolio for Justin — Python automation, AI-assisted development, Linux systems, and web interfaces.',
+  identity: 'Developer · Automation · AI · Technology',
+  headline: 'Building useful things with technology.',
+  kicker: 'Developer · Automation · AI',
+  focus: ['Python', 'AI', 'Automation', 'Linux', 'Web Development'],
+  profileImage: '/profile.jpg',
 }
 
-export const skills: Skill[] = [
-  { id: 'python', label: 'Python', icon: 'code' },
-  { id: 'js', label: 'JavaScript', icon: 'script' },
-  { id: 'linux', label: 'Linux', icon: 'linux' },
-  { id: 'sec', label: 'Cybersecurity', icon: 'shield' },
-  { id: 'web', label: 'Web Development', icon: 'web' },
-  { id: 'more', label: 'More...', icon: 'more' },
+export const skills = [
+  { id: 'python', label: 'Python', detail: 'Automation, scripting, and practical tools' },
+  { id: 'javascript', label: 'JavaScript', detail: 'Interactive interfaces in the browser' },
+  { id: 'htmlcss', label: 'HTML & CSS', detail: 'Structure, layout, and visual systems' },
+  { id: 'linux', label: 'Linux', detail: 'Systems, shells, and troubleshooting' },
+  { id: 'git', label: 'Git & GitHub', detail: 'Version control and collaboration' },
+  { id: 'automation', label: 'Python automation', detail: 'Turning repeatable work into workflows' },
+  { id: 'ai-dev', label: 'AI-assisted development', detail: 'Building faster with intelligent tools' },
+  { id: 'ai-int', label: 'AI integration', detail: 'Connecting models to useful pipelines' },
+  { id: 'web', label: 'Web development', detail: 'From idea to working interface' },
+  { id: 'security', label: 'Cybersecurity fundamentals', detail: 'Networks, the web, and defensive basics' },
 ]
 
-export const socialLinks: SocialLink[] = [
+export const domains = [
+  { id: 'python', label: 'Python & Automation', icon: 'code' as const },
+  { id: 'linux', label: 'Linux & Systems', icon: 'terminal' as const },
+  { id: 'security', label: 'Cybersecurity', icon: 'shield' as const },
+  { id: 'ai', label: 'AI Integration', icon: 'spark' as const },
+  { id: 'teach', label: 'Teaching & Communication', icon: 'teach' as const },
+]
+
+export const experience = [
   {
-    id: 'youtube',
-    label: 'YouTube',
-    description: 'Tutorials, Projects & More',
-    href: urls.youtube,
-    icon: 'youtube',
-    accent: '#ff5b5b',
+    id: 'crimson',
+    role: 'Computer Instructor',
+    org: 'Crimson Education Hub',
+    dates: 'October 2017 – May 2019',
+    summary: 'Taught computing fundamentals and helped students work through practical problems.',
   },
   {
-    id: 'github',
-    label: 'GitHub',
-    description: 'My Projects & Open Source',
-    href: urls.github,
-    icon: 'github',
-    accent: '#d7dde8',
-  },
-  {
-    id: 'discord',
-    label: 'Discord',
-    description: 'Join the Community',
-    href: urls.discord,
-    icon: 'discord',
-    accent: '#8aa4ff',
-  },
-  {
-    id: 'linkedin',
-    label: 'LinkedIn',
-    description: "Let's Connect",
-    href: urls.linkedin,
-    icon: 'linkedin',
-    accent: '#5eb0ff',
-  },
-  {
-    id: 'instagram',
-    label: 'Instagram',
-    description: '@Just9n555',
-    href: urls.instagram,
-    icon: 'instagram',
-    accent: '#ff7ad9',
-  },
-  {
-    id: 'telegram',
-    label: 'Telegram',
-    description: 'Updates & More',
-    href: urls.telegram,
-    icon: 'telegram',
-    accent: '#5ec8ff',
-  },
-  {
-    id: 'email',
-    label: 'Email Me',
-    description: 'Get in Touch',
-    href: urls.email,
-    icon: 'mail',
-    accent: '#d58bff',
+    id: 'brilliant',
+    role: 'English Teacher',
+    org: 'Shree Brilliant English Boarding School',
+    dates: 'November 2021 – June 2023',
+    summary: 'Taught English with an emphasis on clarity, structure, and communication.',
   },
 ]
 
-export const quickLinks: QuickLink[] = [
-  { id: 'portfolio', label: 'Portfolio', href: urls.portfolio, icon: 'globe' },
-  { id: 'resume', label: 'Resume', href: urls.resume, icon: 'file' },
-  { id: 'blog', label: 'Blog', href: urls.blog, icon: 'book' },
-  { id: 'moonfall', label: 'Moonfall App', href: urls.moonfall, icon: 'game' },
-  { id: 'teaching', label: 'Teaching', href: urls.teaching, icon: 'teach' },
-  { id: 'thai', label: 'Thai Learning', href: urls.thai, icon: 'language' },
+export type Project = {
+  id: string
+  name: string
+  blurb: string
+  description: string
+  href?: string
+  tags: string[]
+  cover: 'moonfall' | 'workflow' | 'extractor' | 'web'
+}
+
+export const projects: Project[] = [
+  {
+    id: 'moonfall',
+    name: 'Moonfall',
+    blurb: 'A werewolf game for players in the same room.',
+    description:
+      'Roles, night and day phases, and shared game state drive a local multiplayer session. Players stay in one place; the software keeps the round together.',
+    href: urls.moonfall,
+    tags: ['Game', 'Local multiplayer'],
+    cover: 'moonfall',
+  },
+  {
+    id: 'ai-workflow',
+    name: 'AI Workflow Assistant',
+    blurb: 'Notes become summaries, actions, and labels.',
+    description:
+      'A Python CLI that turns plain-text notes into summaries, action items, and classifications. It includes an offline demo mode and can call an OpenAI-compatible API.',
+    href: urls.aiWorkflow,
+    tags: ['Python', 'AI', 'CLI'],
+    cover: 'workflow',
+  },
+  {
+    id: 'data-extractor',
+    name: 'Data Extractor',
+    blurb: 'Pull structure out of messy input.',
+    description:
+      'A project focused on extracting, parsing, and exporting structured information from raw input.',
+    href: urls.dataExtractor,
+    tags: ['Python', 'Data'],
+    cover: 'extractor',
+  },
+  {
+    id: 'chill-bot',
+    name: 'Chill Corner Bot',
+    blurb: 'Community operations for Chill Corner.',
+    description: 'The official bot for the Chill Corner community.',
+    href: urls.chillBot,
+    tags: ['Bot', 'Community'],
+    cover: 'web',
+  },
 ]
 
-export const followLinks: FollowLink[] = [
-  { id: 'youtube', label: 'YouTube', href: urls.youtube, icon: 'youtube' },
-  { id: 'github', label: 'GitHub', href: urls.github, icon: 'github' },
-  { id: 'discord', label: 'Discord', href: urls.discord, icon: 'discord' },
-  { id: 'linkedin', label: 'LinkedIn', href: urls.linkedin, icon: 'linkedin' },
-  { id: 'instagram', label: 'Instagram', href: urls.instagram, icon: 'instagram' },
-  { id: 'telegram', label: 'Telegram', href: urls.telegram, icon: 'telegram' },
-  { id: 'x', label: 'X', href: urls.x, icon: 'x' },
-]
+export const social = [
+  { id: 'github', label: 'GitHub', href: urls.github },
+  { id: 'linkedin', label: 'LinkedIn', href: urls.linkedin },
+  { id: 'youtube', label: 'YouTube', href: urls.youtube },
+  { id: 'discord', label: 'Discord', href: urls.discord },
+  { id: 'instagram', label: 'Instagram', href: urls.instagram },
+  { id: 'telegram', label: 'Telegram', href: urls.telegram },
+  { id: 'email', label: 'Email', href: urls.email },
+  { id: 'resume', label: 'Resume', href: urls.resume },
+  { id: 'blog', label: 'Blog', href: urls.blog },
+] as const

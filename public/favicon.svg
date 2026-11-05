@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="J">
-  <rect width="64" height="64" rx="16" fill="#070510"/>
-  <rect x="4" y="4" width="56" height="56" rx="13" fill="none" stroke="#B84DFF"/>
-  <text x="32" y="42" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="700" fill="#F8F5FF">J</text>
+  <rect width="64" height="64" rx="16" fill="#111117"/>
+  <text x="32" y="42" text-anchor="middle" font-family="Geist Sans, Inter, sans-serif" font-size="28" font-weight="650" fill="#C4B5FD">J</text>
 </svg>

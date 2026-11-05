@@ -1,21 +1,19 @@
-import type { MouseEvent } from 'react'
-
-export function isPendingHref(href: string) {
-  return !href || href === '#' || href === 'mailto:'
+export function isConfigured(href?: string) {
+  if (!href) return false
+  const value = href.trim()
+  if (!value || value === '#') return false
+  if (value === 'mailto:' || value === 'mailto') return false
+  return true
 }
 
-export function linkProps(href: string) {
-  const pending = isPendingHref(href)
-  const external = href.startsWith('http')
-  const mail = href.startsWith('mailto:') && href.length > 7
-
+export function externalLink(href: string) {
   return {
-    href: pending ? '#' : href,
-    target: external ? '_blank' : undefined,
-    rel: external ? 'noreferrer noopener' : undefined,
-    'aria-disabled': pending || undefined,
-    onClick: (event: MouseEvent<HTMLAnchorElement>) => {
-      if (pending && !mail) event.preventDefault()
-    },
+    href,
+    target: '_blank' as const,
+    rel: 'noreferrer noopener',
   }
+}
+
+export function configured<T extends { href?: string }>(items: readonly T[]) {
+  return items.filter((item) => isConfigured(item.href))
 }
