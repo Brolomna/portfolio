@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-label="Profile placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2A1258"/>
+      <stop offset="55%" stop-color="#12091F"/>
+      <stop offset="100%" stop-color="#3B1678"/>
+    </linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E9D5FF"/>
+      <stop offset="100%" stop-color="#C4B5FD"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#B84DFF" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#B84DFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="320" height="320" fill="url(#bg)"/>
+  <circle cx="160" cy="128" r="140" fill="url(#glow)"/>
+  <circle cx="160" cy="122" r="58" fill="url(#face)"/>
+  <path d="M64 312c18-62 54-96 96-96s78 34 96 96" fill="#1E0B3F"/>
+  <path d="M64 312c18-62 54-96 96-96s78 34 96 96" fill="#8B35FF" opacity="0.35"/>
+  <text x="160" y="138" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="34" font-weight="700" fill="#3B1764">J</text>
+</svg>
