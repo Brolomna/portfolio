@@ -1,5 +1,8 @@
 import { experience, projects, site, skills, social } from '../../data/site'
 import { configured, externalLink, isConfigured } from '../../lib/links'
+import { AIWorkflowProjectVisual } from '../visuals/AIWorkflowProjectVisual'
+import { DataExtractorProjectVisual } from '../visuals/DataExtractorProjectVisual'
+import { MoonfallProjectVisual } from '../visuals/MoonfallProjectVisual'
 
 type PortfolioSectionsProps = {
   onInteract: () => void
@@ -12,12 +15,21 @@ export function PortfolioSections({ onInteract }: PortfolioSectionsProps) {
     <div onPointerDown={onInteract}>
       <section className="section" id="work">
         <p className="scene-label">Work</p>
-        <h2>Projects with public source.</h2>
-        <p className="muted">Described from the actual repositories. No invented metrics or screenshots.</p>
+        <h2>Selected work.</h2>
+        <p className="muted">Described from the actual projects. Repository links can be added later.</p>
         <div className="grid-2" style={{ marginTop: 28 }}>
           {projects.map((project) => (
             <article className="panel" key={project.id}>
-              <div className={`cover cover--${project.cover}`} style={{ height: 120, borderRadius: 12, marginBottom: 16 }} />
+              <div className="work-art">
+                {project.id === 'moonfall' ? <MoonfallProjectVisual reduced /> : null}
+                {project.id === 'ai-workflow' ? <AIWorkflowProjectVisual reduced /> : null}
+                {project.id === 'data-extractor' ? <DataExtractorProjectVisual reduced /> : null}
+                {project.id === 'chill-bot' ? (
+                  <div className="proj proj-flow is-static" aria-hidden="true">
+                    <p className="muted" style={{ padding: 16 }}>Community operations</p>
+                  </div>
+                ) : null}
+              </div>
               <h3>{project.name}</h3>
               <p className="muted">{project.description}</p>
               <div className="chip-wrap" style={{ margin: '14px 0' }}>

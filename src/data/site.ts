@@ -5,20 +5,20 @@ export type OptionalUrl = string
  * Never use "#" or incomplete mailto values here.
  */
 export const urls = {
-  github: 'https://github.com/Brolomna',
+  github: '',
   linkedin: '',
   youtube: '',
   discord: '',
-  instagram: 'https://www.instagram.com/Just9n555/',
+  instagram: '',
   telegram: '',
   x: '',
   email: '',
   resume: '',
   blog: '',
-  moonfall: 'https://github.com/Brolomna/Moonfall',
-  aiWorkflow: 'https://github.com/Brolomna/ai-workflow-assistant',
-  dataExtractor: 'https://github.com/Brolomna/data_extractor',
-  chillBot: 'https://github.com/Brolomna/Chill-Corner-Bot',
+  moonfall: '',
+  aiWorkflow: '',
+  dataExtractor: '',
+  chillBot: '',
 } satisfies Record<string, OptionalUrl>
 
 export const site = {

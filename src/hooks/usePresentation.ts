@@ -11,6 +11,7 @@ export function usePresentation(options?: { autoPlay?: boolean }) {
   const [progress, setProgress] = useState(0)
   const elapsedRef = useRef(0)
   const indexRef = useRef(0)
+  const progressBucketRef = useRef(-1)
 
   const scene = scenes[index]
   const playing = !userPaused && !hold && !reduced
@@ -60,12 +61,17 @@ export function usePresentation(options?: { autoPlay?: boolean }) {
       const currentDuration = scenes[indexRef.current].duration
       if (elapsedRef.current >= currentDuration) {
         elapsedRef.current = 0
+        progressBucketRef.current = -1
         const wrapped = (indexRef.current + 1) % count
         indexRef.current = wrapped
         setIndex(wrapped)
         setProgress(0)
       } else {
-        setProgress(elapsedRef.current / currentDuration)
+        const bucket = Math.floor((elapsedRef.current / currentDuration) * 24)
+        if (bucket !== progressBucketRef.current) {
+          progressBucketRef.current = bucket
+          setProgress(elapsedRef.current / currentDuration)
+        }
       }
       frame = requestAnimationFrame(tick)
     }

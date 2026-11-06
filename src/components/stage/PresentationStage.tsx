@@ -6,7 +6,6 @@ import { IdentityScene } from '../scenes/IdentityScene'
 import { ContactScene, ProjectsScene, TeachingScene } from '../scenes/HumanScenes'
 import { AIScene, LinuxScene, PythonScene, SecurityScene, WebScene } from '../scenes/TechnicalScenes'
 import { AmbientCanvas } from '../visuals/AmbientCanvas'
-import { MorphField } from '../visuals/MorphField'
 import { StageBackdrop } from '../visuals/StageBackdrop'
 
 type PresentationStageProps = {
@@ -20,33 +19,33 @@ export function PresentationStage({ presentation, mode, onExplore }: Presentatio
 
   return (
     <section
-      className={`stage stage--${mode}`}
+      className={`stage stage--${mode} scene-skin scene-skin--${scene.id}${playing ? '' : ' is-paused'}`}
       id="showcase"
       aria-roledescription="carousel"
       aria-label="Autonomous professional showcase"
     >
       <div className="stage__canvas">
         <StageBackdrop />
-        <AmbientCanvas active={playing} reduced={reduced} />
-        <MorphField sceneId={scene.id} reduced={reduced} active={playing} />
+        <AmbientCanvas active={playing} reduced={reduced} sceneId={scene.id} />
+        <div className="handoff" aria-hidden="true" />
         <AnimatePresence mode="wait">
           <motion.div
             key={scene.id}
-            initial={reduced ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={reduced ? { opacity: 1 } : { opacity: 0 }}
+            initial={reduced ? false : { opacity: 0, x: 18 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={reduced ? { opacity: 1 } : { opacity: 0, x: -18 }}
             transition={{ duration: reduced ? 0 : TRANSITION_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
             style={{ height: '100%', position: 'relative', zIndex: 2 }}
           >
-            {scene.id === 'identity' ? <IdentityScene onExplore={onExplore} /> : null}
-            {scene.id === 'python' ? <PythonScene /> : null}
-            {scene.id === 'ai' ? <AIScene /> : null}
-            {scene.id === 'linux' ? <LinuxScene /> : null}
-            {scene.id === 'security' ? <SecurityScene /> : null}
+            {scene.id === 'identity' ? <IdentityScene onExplore={onExplore} reduced={reduced} /> : null}
+            {scene.id === 'python' ? <PythonScene reduced={reduced} /> : null}
+            {scene.id === 'ai' ? <AIScene reduced={reduced} /> : null}
+            {scene.id === 'linux' ? <LinuxScene reduced={reduced} /> : null}
+            {scene.id === 'security' ? <SecurityScene reduced={reduced} /> : null}
             {scene.id === 'web' ? <WebScene reduced={reduced} /> : null}
-            {scene.id === 'projects' ? <ProjectsScene /> : null}
-            {scene.id === 'teaching' ? <TeachingScene /> : null}
-            {scene.id === 'contact' ? <ContactScene /> : null}
+            {scene.id === 'projects' ? <ProjectsScene reduced={reduced} /> : null}
+            {scene.id === 'teaching' ? <TeachingScene reduced={reduced} /> : null}
+            {scene.id === 'contact' ? <ContactScene reduced={reduced} /> : null}
           </motion.div>
         </AnimatePresence>
         {mode === 'theater' ? <PresentationChrome presentation={presentation} /> : null}
